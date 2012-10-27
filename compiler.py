@@ -1167,10 +1167,10 @@ class Assembler( object ):
 							line = 'addl ' + operand_b[ 'operand' ][ 0 ] + r'(, %edi, 4), %eax'
 							self.ass_file_handler.insert( line, 'TEXT' )
 						elif operand_b[ 'type' ] == 'VARIABLE':
-							line = 'addl ' + operand_a[ 'operand' ] + r', %eax'
+							line = 'addl ' + operand_b[ 'operand' ] + r', %eax'
 							self.ass_file_handler.insert( line, 'TEXT' )
 						elif operand_b[ 'type' ] == 'CONSTANT':
-							line = 'addl $' + operand_a[ 'operand' ] + r', %eax'
+							line = 'addl $' + operand_b[ 'operand' ] + r', %eax'
 							self.ass_file_handler.insert( line, 'TEXT' )
 						#赋值给临时操作数
 						line = 'movl %eax, bss_tmp'
