@@ -17,7 +17,7 @@ Include --> #include < ID > | #include "ID"
 ''''''''''''''''''''''''''''''''''''
 '声明语句
 ''''''''''''''''''''''''''''''''''''
-Statement --> Type ID; | Type [ ID ]; | Type [ ID ] = { ConstantList };
+Statement --> Type ID; | Type ID[ Constant ]; | Type ID[ Constant ] = { ConstantList };
 Type --> int | float 
 ConstantList --> ∑ | Constant ConstantRest
 ConstantRest --> ∑ | ,Constant | ConstantRest
