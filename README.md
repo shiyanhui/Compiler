@@ -19,19 +19,23 @@ LOGS:
 用法(假设源文件为source.c)
 ------------------------
 * 帮助：
+
     python compiler.py -h
 
 * 查看词法分析结果：
+
     python compiler.py -s source.c -l
 
 * 查看语法树：
+
     python compiler.py -s source.c -p
 
 * 生成汇编：
+
     python compiler.py -s source.c -a
-> 生成的汇编文件为source.S，与compiler.py同目录
 
 *将汇编文件编译成二进制：
+
     gcc source.S -o source
 
 
