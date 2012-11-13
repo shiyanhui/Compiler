@@ -7,32 +7,32 @@ LOGS:
 -----
 
 --------V2.0------------
-1、支持词法分析、语法分析、语义分析、生成汇编
-2、最终输出AT&T格式的汇编代码
+* 支持词法分析、语法分析、语义分析、生成汇编
+* 最终输出AT&T格式的汇编代码
 
 --------V1.0------------
-1、实现了基本的词法分析和语法分析
-2、输出Tokens和语法分析树
+* 实现了基本的词法分析和语法分析
+* 输出Tokens和语法分析树
 
 
 
 用法(假设源文件为source.c)
 ------------------------
 * 帮助：
-	python compiler.py -h
+    python compiler.py -h
 
 * 查看词法分析结果：
-	python compiler.py -s source.c -l
+    python compiler.py -s source.c -l
 
 * 查看语法树：
-	python compiler.py -s source.c -p
+    python compiler.py -s source.c -p
 
 * 生成汇编：
-	python compiler.py -s source.c -a
-生成的汇编文件为source.S，与compiler.py同目录
+    python compiler.py -s source.c -a
+> 生成的汇编文件为source.S，与compiler.py同目录
 
 *将汇编文件编译成二进制：
-	gcc source.S -o source
+    gcc source.S -o source
 
 
 
@@ -51,8 +51,8 @@ TODO:
 
 Test Environment
 ------------------------
-Ubuntu 12.04
-Python version: 2.7
+* Ubuntu 12.04
+* Python version: 2.7
 
 
 Contact me：
