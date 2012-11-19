@@ -1,6 +1,6 @@
 编译C语言的一个小型编译器
 =========================
-详细要求见http://blog.hit.edu.cn/jsx/post/46.html
+详细要求见http://os.hit.edu.cn/?p=7
 
 
 LOGS:
