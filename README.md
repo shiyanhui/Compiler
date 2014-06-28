@@ -59,6 +59,3 @@ Test Environment
 * Python version: 2.7
 
 
-Contact me：
-------------------------
-shiyanhui66@gmail.com
