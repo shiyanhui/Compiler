@@ -61,20 +61,33 @@ DETAIL_TOKEN_STYLE = {
     '<=': 'LET',
     '(': 'LL_BRACKET',
     ')': 'RL_BRACKET',
-    '{': 'LB_BRACKET', '}': 'RB_BRACKET', '[': 'LM_BRACKET', ']': 'RM_BRACKET', ',': 'COMMA', '\"': 'DOUBLE_QUOTE',
-    ';': 'SEMICOLON', '#': 'SHARP'}
+    '{': 'LB_BRACKET',
+    '}': 'RB_BRACKET',
+    '[': 'LM_BRACKET',
+    ']': 'RM_BRACKET',
+    ',': 'COMMA',
+    '"': 'DOUBLE_QUOTE',
+    ';': 'SEMICOLON',
+    '#': 'SHARP',
+}
 
 # 关键字
-keywords = [['int', 'float', 'double', 'char', 'void'],
-           ['if', 'for', 'while', 'do', 'else'], ['include', 'return']]
+keywords = [
+    ['int', 'float', 'double', 'char', 'void'],
+    ['if', 'for', 'while', 'do', 'else'], ['include', 'return'],
+]
+
 # 运算符
-operators = ['=', '&', '<', '>', '++', '--',
-             '+', '-', '*', '/', '>=', '<=', '!=']
+operators = [
+    '=', '&', '<', '>', '++', '--', '+', '-', '*', '/', '>=', '<=', '!='
+]
+
 # 分隔符
 delimiters = ['(', ')', '{', '}', '[', ']', ',', '\"', ';']
 
 # c文件名字
 file_name = None
+
 # 文件内容
 content = None
 
@@ -83,8 +96,9 @@ class Token(object):
     '''记录分析出来的单词'''
 
     def __init__(self, type_index, value):
-        self.type = DETAIL_TOKEN_STYLE[
-            value] if type_index == 0 or type_index == 3 or type_index == 4 else TOKEN_STYLE[type_index]
+        self.type = DETAIL_TOKEN_STYLE[value] if (
+            type_index == 0 or type_index == 3 or type_index == 4
+        ) else TOKEN_STYLE[type_index]
         self.value = value
 
 
@@ -97,7 +111,12 @@ class Lexer(object):
 
     # 判断是否是空白字符
     def is_blank(self, index):
-        return content[index] == ' ' or content[index] == '\t' or content[index] == '\n' or content[index] == '\r'
+        return (
+            content[index] == ' ' or
+            content[index] == '\t' or
+            content[index] == '\n' or
+            content[index] == '\r'
+        )
 
     # 跳过空白字符
     def skip_blank(self, index):
@@ -158,7 +177,10 @@ class Lexer(object):
             elif content[i].isalpha() or content[i] == '_':
                 # 找到该字符串
                 temp = ''
-                while i < len(content) and (content[i].isalpha() or content[i] == '_' or content[i].isdigit()):
+                while i < len(content) and (
+                        content[i].isalpha() or
+                        content[i] == '_' or
+                        content[i].isdigit()):
                     temp += content[i]
                     i += 1
                 # 判断该字符串
@@ -173,7 +195,8 @@ class Lexer(object):
             elif content[i].isdigit():
                 temp = ''
                 while i < len(content):
-                    if content[i].isdigit() or (content[i] == '.' and content[i + 1].isdigit()):
+                    if content[i].isdigit() or (
+                            content[i] == '.' and content[i + 1].isdigit()):
                         temp += content[i]
                         i += 1
                     elif not content[i].isdigit():
@@ -210,7 +233,8 @@ class Lexer(object):
             # 如果是运算符
             elif content[i] in operators:
                 # 如果是++或者--
-                if (content[i] == '+' or content[i] == '-') and content[i + 1] == content[i]:
+                if (content[i] == '+' or content[i] == '-') and (
+                        content[i + 1] == content[i]):
                     # self.print_log( '运算符', content[ i ] * 2 )
                     self.tokens.append(Token(3, content[i] * 2))
                     i = self.skip_blank(i + 2)
